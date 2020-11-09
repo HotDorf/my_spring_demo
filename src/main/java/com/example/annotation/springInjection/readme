@@ -1,0 +1,4 @@
+springIOC 的解耦通过工厂模式来分层。
+    有bean对象创建和管理，注解是@Component，xml是<Bean id=" " class=" "></Bean>标签
+    用@Configuration来替换xml配置文件，创建配置对象
+    最后注入，@Autowired，实现原理是解析注解，代码在InjectionTest中。

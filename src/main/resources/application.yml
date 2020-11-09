@@ -1,0 +1,38 @@
+spring:
+  messages:
+    basename: message
+  # 数据库
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/workflow_flowable?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Hongkong&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
+    username: mysql
+    password: "mysql"
+  jpa:
+      show-sql: true #这里开启sql打印
+      generate-ddl: true
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5Dialect
+          format_sql: true
+          use_sql_comments: true
+          naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  application:
+    name: workflow-server # 项目名字
+
+server:
+  port: 8088
+  servlet:
+      context-path: /workflow-server
+
+logging:
+  file:
+    path: log
+  level: #设置这个让执行的sql打印在控制台上
+    com.example.annotation.mybatisplus.entities.mapper: debug
+
+
+#mybatis-plus:
+ # mapper-locations: "com/example/annotation/mybatis/MybatisMapper.xml"
+

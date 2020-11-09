@@ -1,0 +1,10 @@
+    Collection接口的实现类有ArrayList、Vector、LinkList，他们都是有序可重复集合，除Vector是线程安全之外其余都是线程不安全。除LinkList是链表结构
+之外都是数组结构，所以linkList动态增删数据很适合，操作首尾数据很合适，操作队列还是可以，但是查询遍历相比之下就不擅长了。
+    Set接口的实现类有HashSet、LinkHashSet、TreeSet，Set集合专注于独一无二的功能，它们都是无序不重复集合，如果想要用set结合装自定义类，那就最好
+重写一下hashcode方法和equals方法，set集合对自己元素唯一性判断就是根据所装对象的这两个方法来确定的。HashSet是哈希表结构，底层实现是hashMap，存取
+都快。除了hashSet之外，其它两个不算了解。
+    Map接口的实现类有HashMap、LinkedHashMap、ConcurrentHashMap、HashTable（遗留类）、TreeMap。在jdk8中，HashMap是数组+链表+红黑树的结构，一次扩容
+当前容量的两倍，默认初始长度是16，链表的数量取决于hash桶数量，超过8个之后会转换成红黑树结构。其中只有ConcurrentHashMap和HashTable是线程安全的，
+ConcurretnHAshMap的默认并发是16个Segement（有的地方叫它分段锁），即currentLevel值，这个值可以在创建数组的时候设定，理论上可以满足${concurrentLevel}个
+线程并发读写，可以将每个Segement看作是一个HashMap集合，segement数量一旦在开始的时候创建了就不能再变化了。而遗留类HashTable的并发量少，只有一两个。值得
+注意的是LinkedHashMap作为HashMap的子类，保存了插入顺序，在遍历的时候，先得到的数据是先插入的，也可以按照访问顺序来排序，最新访问的数据再最后一位。

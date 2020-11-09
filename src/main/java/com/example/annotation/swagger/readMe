@@ -1,0 +1,2 @@
+配置Controller层就可以了，要写明请求类型。
+http://localhost:8088/workflow-server/swagger-ui.html#/
