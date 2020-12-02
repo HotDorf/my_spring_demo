@@ -11,7 +11,7 @@ spring:
       show-sql: true #这里开启sql打印
       generate-ddl: true
       hibernate:
-        ddl-auto: update
+        ddl-auto: update #每次运行程序，没有表格会新建表格，表内有数据不会清空，只会更新
       properties:
         hibernate:
           dialect: org.hibernate.dialect.MySQL5Dialect
@@ -28,8 +28,8 @@ server:
 
 logging:
   file:
-    path: log
-  level: #设置这个让执行的sql打印在控制台上
+    path: log #设置日志打印的地方
+  level: #设置这个让mybatisplus框架执行的sql打印在控制台上
     com.example.annotation.mybatisplus.entities.mapper: debug
 
 

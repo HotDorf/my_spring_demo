@@ -1,0 +1,7 @@
+现在持久层的框架用的有点多，mybatis-plus，mybatis，spring data JPA，不知不觉用法和注解就容易搞混，时间一长就忘记，惭愧。
+1、mybatis-plus可以通过引擎自动生成持久层的代码，之后需要配置扫描或启动类注解@MapperScan来扫描mapper包，以及扫描实体类，
+可以通过配日志来打印执行的sql。是将mybatis再又封装了一层，与mybatis兼容，实际上就是mybatis的升级版。
+2、JPA与mybatis是不一样的框架，是本质的区别。用@Entity与数据库表显示对应起来，然后继承JpaRepository<User,Integer>,JpaSpecificationExecutor<User>就可，
+接口服务类不需要用@Repository注解也不影响，并且不需要扫描Mapper类和实体类，而mybatis-plus就不行，不能不要@Repository注解--毕竟它实际是mybatis的简化版，使用上还是要遵从mybatis。
+另外，mybatis-plus不需要用@Table或@Entity和数据库表用注解对应起来。
+3、都是生成动态代理的，原理有点忘了。

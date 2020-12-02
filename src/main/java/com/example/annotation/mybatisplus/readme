@@ -1,2 +1,3 @@
 autoGenerator自动生成mapper、entity、service、serviceImplement层代码
-thyme组件在Controller包使用
+
+生成代码之后，配置实体类扫描配置，以及MapperScan扫描Mapper类，配置日志打印执行sql

@@ -40,12 +40,17 @@ public class CodeGenerators {
         }
         throw new MybatisPlusException("请输入正确的" + tip + "！");
     }
-//C:\develop\javaCode\mySpringDemo\my_spring_demo\src\main\java \com\example\annotation\ utils\duojicaidang
-    private static  String path = "C:/develop/javaCode/mySpringDemo/my_spring_demo/src/main/java"; //所有 输出 文件夹地址
+
+    private static  String path = "C:/develop/javaCode/mySpringDemo/my_spring_demo/src/main/java"; //java源码地址
     private static  String parentPackage = "com.example.annotation";  //java下的三级包名
-    //private static  String modelPackage = "mybatisplus.entities";  //对应包
-    private static  String modelPackage = "utils.duojicaidang.entities";  //对应包
+    private static  String modelPackage = "utils.duo.entities";  //实体对应包
     private static  String tableNames = "nod_parent_son";  //数据库表名
+    //数据库表名
+    private static  String dateSourceUrl = "jdbc:mysql://127.0.0.1:3306/myspringboot?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Hongkong&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true";
+    private static  String dateSourceDriverName = "com.mysql.cj.jdbc.Driver";  //数据库driver
+    private static  String dateSourceName = "mysql";  //数据库用户名
+    private static  String dateSourcePassWord = "mysql";  //数据库密码
+
 
     public static void main(String[] args) {
         // 代码生成器
@@ -70,11 +75,11 @@ public class CodeGenerators {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/myspringboot?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Hongkong&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true");
+        dsc.setUrl(dateSourceUrl);
         // dsc.setSchemaName("public");
-        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUsername("mysql");
-        dsc.setPassword("mysql");
+        dsc.setDriverName(dateSourceDriverName);
+        dsc.setUsername(dateSourceName);
+        dsc.setPassword(dateSourcePassWord);
         mpg.setDataSource(dsc);
 
         // 包配置
@@ -147,7 +152,7 @@ public class CodeGenerators {
         //strategy.setSuperEntityColumns("id");
         strategy.setInclude(tableNames.split(","));
         strategy.setControllerMappingHyphenStyle(true);
-        strategy.setTablePrefix(pc.getModuleName() + "_");
+        //strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
         //mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         //mpg.setTemplateEngine(new VelocityTemplateEngine()); // 默认的
